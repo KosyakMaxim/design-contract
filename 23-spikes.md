@@ -219,7 +219,7 @@ Prove the design baseline architecture, including a real REST request.
 2. resolve/validate one exact version through official REST file endpoint;
 3. fetch the configured root/node data using that exact version;
 4. extract the Spike 1 property plus enough schema scaffolding to build a `DesignBaseline`;
-5. stamp `baselineSemanticsVersion = 1`, canonicalize and hash the baseline;
+5. stamp the current `baselineSemanticsVersion`, canonicalize and hash the baseline;
 6. write it to `.design-contract/baselines/<test>.json`;
 7. disable/remove token/network and run the same comparison from the committed baseline only;
 8. change current Figma design after pinning and show offline run remains unchanged;
@@ -320,6 +320,21 @@ STOP and emit BLOCKER.
 ```
 
 The product/spec owner may later decide to move a property to P1 through ADR. The coding agent must not make that product decision itself.
+
+---
+
+# Spike 4 implementation status
+
+```text
+P0 extraction and browser normalization: PASS
+controlled acceptance matrix: 22/22 PASS
+controlled false positives: 0
+seeded supported false negatives: 0
+real Figma version 2384561952068938116 + Vue MFE: PASS
+real MFE comparable checks: 7
+real MFE differences: 0
+baselineSemanticsVersion: 2
+```
 
 ---
 

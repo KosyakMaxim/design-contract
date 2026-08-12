@@ -10,7 +10,7 @@ Use two independent baseline compatibility dimensions:
 
 ```text
 schemaVersion: 1
-baselineSemanticsVersion: 1
+baselineSemanticsVersion: 2
 ```
 
 `schemaVersion` identifies the serialized baseline structure.
@@ -34,6 +34,8 @@ Do not store npm/tool package version in semantic baseline content. A package ve
 - semantic changes require an explicit version bump, tests and ADR/documentation update;
 - semantic hash covers `baselineSemanticsVersion`;
 - old incompatible baselines fail clearly rather than being silently reinterpreted.
+
+Version 2 records the Spike 4 P0 canonical value model, property order, color representation and explicit unsupported semantics. Existing version 1 baselines must be regenerated or are rejected with `BASELINE_SEMANTICS_MISMATCH`.
 
 ## Status
 

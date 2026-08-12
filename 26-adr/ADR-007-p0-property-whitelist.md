@@ -61,4 +61,4 @@ Text content is P0 configurable. Default policy is `collapse-whitespace`; locali
 
 ## Status
 
-Accepted for Technical MVP. This ADR resolves the report conflict.
+Accepted for Technical MVP. Spike 4 validates the whitelist and starting tolerances in the controlled corpus; Spike 5 remains the clean-CI determinism gate.

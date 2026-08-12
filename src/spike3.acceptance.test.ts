@@ -149,7 +149,7 @@ describe("Spike 3: version-pinned Figma baseline", () => {
     const temporaryDirectory = await mkdtemp(resolve(tmpdir(), "design-contract-spike3-semantics-"));
     const incompatiblePath = resolve(temporaryDirectory, "incompatible.json");
     try {
-      await writeFile(incompatiblePath, baselineText.replace('"baselineSemanticsVersion": 1', '"baselineSemanticsVersion": 2'), "utf8");
+      await writeFile(incompatiblePath, baselineText.replace('"baselineSemanticsVersion": 2', '"baselineSemanticsVersion": 3'), "utf8");
       await expect(loadOfflineBaseline(incompatiblePath)).rejects.toThrow("BASELINE_SEMANTICS_MISMATCH");
     } finally {
       await rm(temporaryDirectory, { recursive: true, force: true });
@@ -165,7 +165,12 @@ describe("Spike 3: version-pinned Figma baseline", () => {
       contractNodeIds: ["42:1337"],
     });
     expect(baseline.nodes["42:1337"]?.properties["padding-left"]).toBeUndefined();
-    expect(baseline.nodes["42:1337"]?.unsupported).toEqual([{ name: "padding-left", reason: "figma-value-absent" }]);
+    expect(baseline.nodes["42:1337"]?.unsupported).toEqual([
+      { name: "padding-top", reason: "figma-value-absent" },
+      { name: "padding-right", reason: "figma-value-absent" },
+      { name: "padding-bottom", reason: "figma-value-absent" },
+      { name: "padding-left", reason: "figma-value-absent" },
+    ]);
     const serialized = serializeBaseline(baseline);
     expect(serialized).toContain("figma-value-absent");
     expect(serialized).not.toContain('"value": 0');

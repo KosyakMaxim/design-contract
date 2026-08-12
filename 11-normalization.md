@@ -77,7 +77,9 @@ export const PROPERTY_ORDER = [
 | four corner radii | `cornerRadius` / `rectangleCornerRadii` with zero smoothing | computed radius longhands | one circular px radius per corner | property | ±0.5px | P0 limited |
 | `opacity` | node `opacity`, default 1 | computed `opacity` | number 0..1 | local property | ±0.005 | P0 |
 
-The tolerances are specification defaults but remain empirically `UNVERIFIED` until Spike 4 and Spike 5. A coding agent must not change them silently in response to fixture failures.
+The tolerances are specification defaults. Spike 4 validates them against the controlled corpus; Spike 5 remains responsible for clean CI-environment repeatability. A coding agent must not change them silently in response to fixture failures.
+
+Spike 4 evidence: 22 controlled acceptance cases pass with zero false positives and zero seeded supported false negatives. The real Vue MFE check for Figma node `341:34185` passes width, height, four paddings and opacity. A Figma `strokeWeight` without a visible solid stroke paint is not a border contract and is omitted from P0.
 
 ## Geometry
 

@@ -16,6 +16,7 @@
     "spike3:update": "tsx src/cli/spike3.ts update",
     "spike3:run": "tsx src/cli/spike3.ts run",
     "spike3:acceptance": "vitest run src/spike3.acceptance.test.ts",
+    "spike4:acceptance": "vitest run src/spike4.acceptance.test.ts",
     "design-test": "tsx src/cli/spike3.ts"
   },
   "dependencies": {

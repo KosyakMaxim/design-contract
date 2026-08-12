@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "baselineSemanticsVersion": 1,
+  "baselineSemanticsVersion": 2,
   "testId": "spike3-padding-left",
   "figma": {
     "fileKey": "Xr97pFmNzq7hX5kG1RaZj6",
@@ -23,10 +23,45 @@
           "reliability": "high",
           "provenance": "figma-rest"
         },
+        "height": {
+          "name": "height",
+          "value": 152,
+          "unit": "px",
+          "reliability": "high",
+          "provenance": "figma-rest"
+        },
+        "padding-top": {
+          "name": "padding-top",
+          "value": 40,
+          "unit": "px",
+          "reliability": "high",
+          "provenance": "figma-rest"
+        },
+        "padding-right": {
+          "name": "padding-right",
+          "value": 20,
+          "unit": "px",
+          "reliability": "high",
+          "provenance": "figma-rest"
+        },
+        "padding-bottom": {
+          "name": "padding-bottom",
+          "value": 4,
+          "unit": "px",
+          "reliability": "high",
+          "provenance": "figma-rest"
+        },
         "padding-left": {
           "name": "padding-left",
           "value": 20,
           "unit": "px",
+          "reliability": "high",
+          "provenance": "figma-rest"
+        },
+        "opacity": {
+          "name": "opacity",
+          "value": 1,
+          "unit": "number",
           "reliability": "high",
           "provenance": "figma-rest"
         }
@@ -34,5 +69,5 @@
       "unsupported": []
     }
   },
-  "semanticHash": "sha256:eed47b99a443cf4d9b24583c9ee1be2297db644095dc83cafe5d80896d3915f1"
+  "semanticHash": "sha256:84f8dcc3765679d46c27ea7c5443fcf882feca619b44b5c5e3d017b8c6238b1f"
 }

@@ -1,14 +1,69 @@
-export type PropertyName = "padding-left" | "width";
-export type PropertyUnit = "px";
+export type PropertyName =
+  | "width"
+  | "height"
+  | "padding-top"
+  | "padding-right"
+  | "padding-bottom"
+  | "padding-left"
+  | "font-family"
+  | "font-size"
+  | "font-weight"
+  | "line-height"
+  | "letter-spacing"
+  | "text-content"
+  | "color"
+  | "background-color"
+  | "border-top-width"
+  | "border-right-width"
+  | "border-bottom-width"
+  | "border-left-width"
+  | "border-top-color"
+  | "border-right-color"
+  | "border-bottom-color"
+  | "border-left-color"
+  | "border-top-left-radius"
+  | "border-top-right-radius"
+  | "border-bottom-right-radius"
+  | "border-bottom-left-radius"
+  | "opacity";
 
-export const BASELINE_SEMANTICS_VERSION = 1;
+export type PropertyUnit = "px" | "number" | "rgba" | "text" | "font-family";
+export type NormalizedValue = number | string | CanonicalColor;
+
+export const BASELINE_SEMANTICS_VERSION = 2;
+
+export interface CanonicalColor {
+  r: number;
+  g: number;
+  b: number;
+  a: number;
+}
 
 export interface NormalizedProperty {
   name: PropertyName;
-  value: number;
+  value: NormalizedValue;
   unit: PropertyUnit;
-  reliability: "high";
-  provenance: "figma-rest" | "browser-computed-style";
+  reliability: "high" | "medium";
+  provenance: "figma-rest" | "browser-geometry" | "browser-computed-style" | "browser-dom";
+}
+
+export type UnsupportedReason =
+  | "figma-value-absent"
+  | "node-type-unsupported"
+  | "mixed-text-style"
+  | "multiple-visible-fills"
+  | "non-solid-fill"
+  | "corner-smoothing"
+  | "stroke-alignment"
+  | "complex-stroke"
+  | "transformed-geometry"
+  | "font-availability-unverifiable"
+  | "runtime-value-unparseable"
+  | "content-check-disabled";
+
+export interface UnsupportedProperty {
+  name: PropertyName;
+  reason: UnsupportedReason;
 }
 
 export interface DesignNode {
@@ -18,11 +73,6 @@ export interface DesignNode {
   parentId?: string;
   properties: Partial<Record<PropertyName, NormalizedProperty>>;
   unsupported: UnsupportedProperty[];
-}
-
-export interface UnsupportedProperty {
-  name: PropertyName;
-  reason: "figma-value-absent" | "node-type-unsupported" | "transformed-geometry";
 }
 
 export interface FigmaBaselineMetadata {
@@ -46,7 +96,7 @@ export interface RuntimeNode {
   selector: string;
   tagName: string;
   properties: Partial<Record<PropertyName, NormalizedProperty>>;
-  unsupported: never[];
+  unsupported: UnsupportedProperty[];
 }
 
 export interface NodeMatch {
@@ -56,7 +106,7 @@ export interface NodeMatch {
 }
 
 export interface MappingError {
-  code: "MAPPING_MISSING" | "MAPPING_DUPLICATE";
+  code: "MAPPING_MISSING" | "MAPPING_DUPLICATE" | "NO_COMPARABLE_PROPERTIES";
   testId: string;
   designNodeId: string;
   message: string;
@@ -66,7 +116,7 @@ export interface SkippedCheck {
   testId: string;
   designNodeId: string;
   property: PropertyName;
-  reason: UnsupportedProperty["reason"];
+  reason: UnsupportedReason;
 }
 
 export interface Difference {
@@ -74,11 +124,11 @@ export interface Difference {
   designNodeId: string;
   nodeName: string;
   property: PropertyName;
-  expected: number;
-  actual: number;
+  expected: NormalizedValue;
+  actual: NormalizedValue;
   unit: PropertyUnit;
-  delta: number;
-  tolerance: number;
+  delta?: number;
+  tolerance?: number;
   selector: string;
   severity: "error";
 }
