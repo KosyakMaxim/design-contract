@@ -388,6 +388,23 @@ For each scenario:
 0 unexplained browser/runtime flakes
 ```
 
+## Spike 5 implementation status
+
+```text
+ubuntu runner: pinned ubuntu-24.04
+Node: pinned 24.19.0
+Playwright: 1.62 lockfile + bundled Chromium
+DPR: 1
+viewport: 1260x900
+locale/timezone: en-US / UTC
+color scheme: light
+reduced motion: reduce
+animations/transitions: disabled
+pass scenario: 20 runs / 1 semantic SHA-256
+seeded-failure scenario: 20 runs / 1 semantic SHA-256
+runtime flakes: 0
+```
+
 ## FAIL
 
 Any semantic value, difference set, mapping, source location, skipped set or pass/fail variation across identical runs.

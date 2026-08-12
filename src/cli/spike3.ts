@@ -66,8 +66,9 @@ async function compareBaselineWithUrl(baseline: DesignBaseline, url: string): Pr
   let browser: Awaited<ReturnType<typeof chromium.launch>> | undefined;
   try {
     browser = await chromium.launch();
-    const page = await browser.newPage({ viewport: { width: 1260, height: 900 }, locale: "ru-RU", timezoneId: "UTC" });
+    const page = await browser.newPage({ viewport: { width: 1260, height: 900 }, deviceScaleFactor: 1, locale: "en-US", timezoneId: "UTC", colorScheme: "light", reducedMotion: "reduce" });
     await page.goto(parsedUrl.toString(), { waitUntil: "networkidle" });
+    await page.addStyleTag({ content: "*, *::before, *::after { animation: none !important; transition: none !important; }" });
     const counts = await collectMappingCounts(page, baseline.contractNodeIds);
     const matching = matchExplicitNodes(baseline.testId, baseline, counts);
     const runtimeNodes = matching.mappingErrors.length === 0 ? await collectRuntimeNodes(page, baseline.contractNodeIds) : [];

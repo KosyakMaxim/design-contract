@@ -1,0 +1,35 @@
+name: Design Contract
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  spike5-determinism:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Use Node 24.19.0
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24.19.0
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Install pinned Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Typecheck
+        run: npm run typecheck
+
+      - name: Run Spike 5 determinism acceptance
+        run: npm run spike5:acceptance -- --reporter=dot
+
+      - name: Run full regression
+        run: npm test -- --reporter=dot

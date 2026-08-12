@@ -15,6 +15,8 @@ MVP GitHub output uses:
 - `$GITHUB_STEP_SUMMARY`;
 - optional repository-controlled JSON artifact upload.
 
+The first committed workflow also runs the Spike 5 deterministic pass/failure gate on pinned Ubuntu/Node/Playwright before the full regression suite.
+
 It does not require:
 
 - GitHub App;
