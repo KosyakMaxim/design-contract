@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "baselineSemanticsVersion": 1,
+  "testId": "spike3-padding-left",
+  "figma": {
+    "fileKey": "Xr97pFmNzq7hX5kG1RaZj6",
+    "version": "2384561952068938116",
+    "rootNodeId": "341:34185"
+  },
+  "contractNodeIds": [
+    "341:34185"
+  ],
+  "nodes": {
+    "341:34185": {
+      "id": "341:34185",
+      "name": "Page Header",
+      "type": "INSTANCE",
+      "properties": {
+        "width": {
+          "name": "width",
+          "value": 1260,
+          "unit": "px",
+          "reliability": "high",
+          "provenance": "figma-rest"
+        },
+        "padding-left": {
+          "name": "padding-left",
+          "value": 20,
+          "unit": "px",
+          "reliability": "high",
+          "provenance": "figma-rest"
+        }
+      },
+      "unsupported": []
+    }
+  },
+  "semanticHash": "sha256:eed47b99a443cf4d9b24583c9ee1be2297db644095dc83cafe5d80896d3915f1"
+}

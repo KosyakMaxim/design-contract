@@ -1,0 +1,34 @@
+{
+  "name": "design-contract-spike-1",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24 <25"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "spike1": "tsx src/cli/spike1.ts",
+    "spike1:acceptance": "vitest run src/spike1.acceptance.test.ts",
+    "spike2": "tsx src/cli/spike2.ts",
+    "spike2:acceptance": "vitest run src/spike2.acceptance.test.ts",
+    "spike3:update": "tsx src/cli/spike3.ts update",
+    "spike3:run": "tsx src/cli/spike3.ts run",
+    "spike3:acceptance": "vitest run src/spike3.acceptance.test.ts",
+    "design-test": "tsx src/cli/spike3.ts"
+  },
+  "dependencies": {
+    "@vitejs/plugin-vue": "6.0.8",
+    "@vue/compiler-sfc": "3.5.41",
+    "playwright": "1.62.0",
+    "vue": "3.5.41",
+    "vite": "8.2.1"
+  },
+  "devDependencies": {
+    "@types/node": "24.3.0",
+    "tsx": "4.20.3",
+    "typescript": "5.9.2",
+    "vitest": "4.1.10"
+  }
+}

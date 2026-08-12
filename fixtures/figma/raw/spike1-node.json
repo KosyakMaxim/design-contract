@@ -1,0 +1,17 @@
+{
+  "document": {
+    "id": "0:0",
+    "name": "Spike 1 Fixture",
+    "type": "DOCUMENT",
+    "children": [
+      {
+        "id": "42:1337",
+        "name": "Checkout",
+        "type": "FRAME",
+        "layoutMode": "HORIZONTAL",
+        "paddingLeft": 24
+      }
+    ]
+  },
+  "version": "spike1-fixture-version"
+}
